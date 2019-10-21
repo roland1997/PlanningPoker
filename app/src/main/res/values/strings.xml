@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">PlanningPoker</string>
+    <string name="name">Name</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="register">Register</string>
+
+
+</resources>
