@@ -13,7 +13,7 @@
 
         <EditText
 
-            android:id="@+id/nameLabel"
+            android:id="@+id/rNameLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
@@ -22,7 +22,7 @@
             android:inputType="textPersonName" />
 
         <EditText
-            android:id="@+id/emailLabel"
+            android:id="@+id/rEmailLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -30,7 +30,7 @@
             android:inputType="textEmailAddress" />
 
         <EditText
-            android:id="@+id/passwordLabel"
+            android:id="@+id/rPasswordLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -38,7 +38,7 @@
             android:inputType="textPassword" />
 
         <Button
-            android:id="@+id/registerButton"
+            android:id="@+id/rRegisterButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
