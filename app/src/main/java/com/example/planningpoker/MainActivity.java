@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -20,8 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditText lName, lPassword;
     Button lLogin, lRegiszter;
-    String email,password;
+
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        lName = (EditText)findViewById(R.id.lNameLabel);
-        lPassword = (EditText)findViewById(R.id.lPasswordLabel);
-        lLogin = (Button)findViewById(R.id.lLoginButton);
-        lRegiszter = (Button)findViewById(R.id.lRegisterButton);
-
+        lName = (EditText) findViewById(R.id.lNameLabel);
+        lPassword = (EditText) findViewById(R.id.lPasswordLabel);
+        lLogin = (Button) findViewById(R.id.lLoginButton);
+        lRegiszter = (Button) findViewById(R.id.lRegisterButton);
 
 
         lRegiszter.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 openActivityRegister();
             }
         });
+
         lLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,40 +51,32 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
-
-        FirebaseUser user = mAuth.getCurrentUser();
-        try{
-            Log.d("beji",user.getUid());
-        }
-        catch (NullPointerException e){
-
-        }
-
     }
-    public void openActivityRegister(){
-        Intent intent = new Intent(this,RegisterActivity.class);
+
+    public void openActivityRegister() {
+        Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-
     }
-    public void openActivitySession(){
+
+    public void openActivitySession() {
+
+        String email, password;
         email = lName.getText().toString().trim();
         password = lPassword.getText().toString().trim();
-        login(email,password);
 
-        Intent intent = new Intent(MainActivity.this,SessionActivity.class);
-        startActivity(intent);
-    }
-    public void login(String email, String password){
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isComplete()){
 
-                }else{
-
-                }
             }
         });
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        Log.d("alma", user.getUid());
+
+        Intent intent = new Intent(MainActivity.this, SessionActivity.class);
+        startActivity(intent);
+
     }
 }
