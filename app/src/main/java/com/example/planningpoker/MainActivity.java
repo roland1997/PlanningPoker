@@ -19,9 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText lName, lPassword;
     Button lLogin, lRegiszter;
-
+    String email,password;
     private FirebaseAuth mAuth;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +29,11 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        lName = (EditText) findViewById(R.id.lNameLabel);
-        lPassword = (EditText) findViewById(R.id.lPasswordLabel);
-        lLogin = (Button) findViewById(R.id.lLoginButton);
-        lRegiszter = (Button) findViewById(R.id.lRegisterButton);
+        lName = (EditText)findViewById(R.id.lNameLabel);
+        lPassword = (EditText)findViewById(R.id.lPasswordLabel);
+        lLogin = (Button)findViewById(R.id.lLoginButton);
+        lRegiszter = (Button)findViewById(R.id.lRegisterButton);
+
 
 
         lRegiszter.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
                 openActivityRegister();
             }
         });
-
         lLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,33 +49,37 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        /*String email="h.huni56@freemail.hu";
+        String password="123456";*/
 
-    }
-
-    public void openActivityRegister() {
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
-    }
-
-    public void openActivitySession() {
-
-        String email, password;
-        email = lName.getText().toString().trim();
-        password = lPassword.getText().toString().trim();
-
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-
-            }
-        });
 
         FirebaseUser user = mAuth.getCurrentUser();
 
-        Log.d("bej", user.getUid());
+        Log.d("bej",user.getUid());
 
-        Intent intent = new Intent(MainActivity.this, SessionActivity.class);
+    }
+    public void openActivityRegister(){
+        email = lName.getText().toString().trim();
+        password = lPassword.getText().toString().trim();
+        login();
+        Intent intent = new Intent(this,RegisterActivity.class);
+        startActivity(intent);
+    }
+    public void openActivitySession(){
+        Intent intent = new Intent(this,SessionActivity.class);
         startActivity(intent);
 
+    }
+    public void login(){
+        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isComplete()){
+
+                }else{
+
+                }
+            }
+        });
     }
 }
