@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseUser user = mAuth.getCurrentUser();
 
-        Log.d("beji",user.getUid());
+        Log.d("bej",user.getUid());
 
     }
     public void openActivityRegister(){
