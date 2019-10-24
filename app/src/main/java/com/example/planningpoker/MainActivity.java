@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -49,28 +50,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        /*String email="h.huni56@freemail.hu";
-        String password="123456";*/
+
 
 
         FirebaseUser user = mAuth.getCurrentUser();
+        try{
+            Log.d("beji",user.getUid());
+        }
+        catch (NullPointerException e){
 
-        Log.d("bej",user.getUid());
+        }
 
     }
     public void openActivityRegister(){
-        email = lName.getText().toString().trim();
-        password = lPassword.getText().toString().trim();
-        login();
         Intent intent = new Intent(this,RegisterActivity.class);
-        startActivity(intent);
-    }
-    public void openActivitySession(){
-        Intent intent = new Intent(this,SessionActivity.class);
         startActivity(intent);
 
     }
-    public void login(){
+    public void openActivitySession(){
+        email = lName.getText().toString().trim();
+        password = lPassword.getText().toString().trim();
+        login(email,password);
+
+        Intent intent = new Intent(MainActivity.this,SessionActivity.class);
+        startActivity(intent);
+    }
+    public void login(String email, String password){
         mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
