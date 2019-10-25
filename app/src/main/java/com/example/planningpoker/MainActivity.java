@@ -67,16 +67,21 @@ public class MainActivity extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    Log.d("alma", user.getUid());
+
+                    Intent intent = new Intent(MainActivity.this, SessionActivity.class);
+                    finish();
+                    startActivity(intent);
+                }else{
+                    Log.d("alma","semmi");
+                }
 
             }
         });
 
-        FirebaseUser user = mAuth.getCurrentUser();
 
-        Log.d("alma", user.getUid());
-
-        Intent intent = new Intent(MainActivity.this, SessionActivity.class);
-        startActivity(intent);
 
     }
 }
