@@ -4,14 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class VoteActivity extends AppCompatActivity {
 
@@ -23,7 +25,7 @@ public class VoteActivity extends AppCompatActivity {
     Button buttonVote5;
 
     private FirebaseAuth mAuth;
-    //com.google.firebase.database.DatabaseReference reff;
+    private DatabaseReference databaseReference;
 
 
     @Override
@@ -32,27 +34,29 @@ public class VoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vote);
 
         mAuth = FirebaseAuth.getInstance();
+        //FirebaseUser user = mAuth.getCurrentUser();
+        //databaseReference = FirebaseDatabase.getInstance().getReference();
+
         initialize();
 
-        Toast.makeText(getApplicationContext(),
-                " Szavasat az egyik gombra kattintva adhatja le.",
-                Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), " Szavasat az egyik gombra kattintva adhatja le.", Toast.LENGTH_SHORT).show();
 
         onClickListener();
     }
 
     private void onClickListener() {
 
-        final VoteNumber vote = new VoteNumber();
-
-        // final com.google.firebase.database.DatabaseReference reff = FirebaseDatabase.getInstance().getReference("vote");
+        //final com.google.firebase.database.DatabaseReference reff = FirebaseDatabase.getInstance().getReference("vote");
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         buttonVote1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                vote.setVote("1");
-      //          reff.push().setValue(vote);
+                String vote = "1";
+                VoteNumber voteNumber = new VoteNumber(vote);
+                FirebaseUser user = mAuth.getCurrentUser();
+                databaseReference.child(user.getUid()).setValue(voteNumber);
+                Log.d("fasz",user.getUid());
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -60,8 +64,12 @@ public class VoteActivity extends AppCompatActivity {
         buttonVote2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vote.setVote("2");
-          //      reff.push().setValue(vote);
+                String vote = "2";
+                VoteNumber voteNumber = new VoteNumber(vote);
+                FirebaseUser user = mAuth.getCurrentUser();
+                databaseReference.child(user.getUid()).setValue(voteNumber);
+                Log.d("fasz",user.getUid());
+                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -69,16 +77,24 @@ public class VoteActivity extends AppCompatActivity {
         buttonVote3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vote.setVote("3");
-            //    reff.push().setValue(vote);
+                String vote = "3";
+                VoteNumber voteNumber = new VoteNumber(vote);
+                FirebaseUser user = mAuth.getCurrentUser();
+                databaseReference.child(user.getUid()).setValue(voteNumber);
+                Log.d("fasz",user.getUid());
+                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
         buttonVote4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                vote.setVote("4");
-              //  reff.push().setValue(vote);
+                String vote = "4";
+                VoteNumber voteNumber = new VoteNumber(vote);
+                FirebaseUser user = mAuth.getCurrentUser();
+                databaseReference.child(user.getUid()).setValue(voteNumber);
+                Log.d("fasz",user.getUid());
+                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -87,8 +103,12 @@ public class VoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                vote.setVote("5");
-             //   reff.push().setValue(vote);
+                String vote = "5";
+                VoteNumber voteNumber = new VoteNumber(vote);
+                FirebaseUser user = mAuth.getCurrentUser();
+                databaseReference.child(user.getUid()).setValue(voteNumber);
+                Log.d("fasz",user.getUid());
+                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -96,7 +116,6 @@ public class VoteActivity extends AppCompatActivity {
 
 
     private void initialize() {
-
         textViewQuestion = findViewById(R.id.textViewQuestion);
         buttonVote1 = findViewById(R.id.buttonVote1);
         buttonVote2 = findViewById(R.id.buttonVote2);

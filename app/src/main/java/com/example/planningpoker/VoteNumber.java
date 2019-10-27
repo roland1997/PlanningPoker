@@ -8,6 +8,10 @@ public class VoteNumber {
 
     }
 
+    public VoteNumber(String vote) {
+        this.vote = vote;
+    }
+
     public String getVote() {
         return vote;
     }
