@@ -33,5 +33,44 @@
             android:gravity="start|top"
             android:hint="@string/question"
             android:inputType="textMultiLine" />
+
+        <EditText
+            android:id="@+id/sQuestionCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/questionCode"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/sCreateButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorOrange"
+            android:text="@string/createSession" />
+
+        <View
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="4dp"
+            android:background="@color/colorDarkBlue"/>
+
+        <EditText
+            android:id="@+id/sQuestionCodeJoin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:ems="10"
+            android:hint="@string/questionCode"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/sJoinSession"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorOrange"
+            android:text="@string/joinSession" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

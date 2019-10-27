@@ -9,12 +9,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.auth.FirebaseAuth;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 public class VoteActivity extends AppCompatActivity {
-
+/*
     TextView textViewQuestion;
     Button buttonVote1;
     Button buttonVote2;
@@ -25,12 +25,12 @@ public class VoteActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     com.google.firebase.database.DatabaseReference reff;
 
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote);
-
+/*
         mAuth = FirebaseAuth.getInstance();
         initialize();
 
@@ -38,9 +38,9 @@ public class VoteActivity extends AppCompatActivity {
                 " Szavasat az egyik gombra kattintva adhatja le.",
                 Toast.LENGTH_SHORT).show();
 
-        onClickListener();
+        onClickListener();*/
     }
-
+/*
     private void onClickListener() {
 
         final VoteNumber vote = new VoteNumber();
@@ -105,6 +105,6 @@ public class VoteActivity extends AppCompatActivity {
         buttonVote5 = findViewById(R.id.buttonVote5);
     }
 
-
+*/
 
 }
