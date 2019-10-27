@@ -14,11 +14,6 @@
     <string name="TextNumberThree">3</string>
     <string name="NumberFour">4</string>
     <string name="NumberFive">5</string>
-    <string name="questionCode">Question Code</string>
-    <string name="createSession">Create Session</string>
-    <string name="joinSession">Join Session</string>
-
-
 
 
 </resources>
