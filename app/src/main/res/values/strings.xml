@@ -8,6 +8,12 @@
     <string name="question">Please write your question</string>
     <string name="planning_poker">Planning Poker</string>
     <string name="session">Session</string>
+    <string name="vote">Vote</string>
+    <string name="textNumberOne">1</string>
+    <string name="TextNumberTwo">2</string>
+    <string name="TextNumberThree">3</string>
+    <string name="NumberFour">4</string>
+    <string name="NumberFive">5</string>
 
 
 </resources>
