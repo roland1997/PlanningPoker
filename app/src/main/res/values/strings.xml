@@ -1,11 +1,13 @@
 <resources>
-    <string name="app_name">PlanningPoker</string>
+    <string name="app_name">Planning Poker</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="question">Please write your question</string>
+    <string name="planning_poker">Planning Poker</string>
+    <string name="session">Session</string>
 
 
 </resources>
