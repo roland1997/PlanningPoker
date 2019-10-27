@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -73,9 +74,11 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MainActivity.this, SessionActivity.class);
                     finish();
+
                     startActivity(intent);
                 }else{
                     Log.d("alma","semmi");
+                    Toast.makeText(getApplicationContext(),"Sikertelen bejelentkezes", Toast.LENGTH_SHORT).show();
                 }
 
             }
