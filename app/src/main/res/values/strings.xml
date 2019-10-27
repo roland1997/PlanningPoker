@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">Planning Poker</string>
     <string name="name">Name</string>
     <string name="password">Password</string>
@@ -17,6 +18,8 @@
     <string name="questionCode">Question Code</string>
     <string name="createSession">Create Session</string>
     <string name="joinSession">Join Session</string>
+    <string name="update">Update</string>
+
 
 
 </resources>

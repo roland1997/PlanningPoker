@@ -2,7 +2,6 @@ package com.example.planningpoker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,13 +20,20 @@ public class SessionActivity extends AppCompatActivity {
         buttonCreateSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                openActivityQuestionDetails();
+            }
+        });
+
+        buttonJoinSession.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 openActivityVote();
             }
         });
     }
 
-    private void openActivityQuestionRoom(){
-        Intent intent = new Intent(this, VoteActivity.class);
+    private void openActivityQuestionDetails(){
+        Intent intent = new Intent(this, QuestionDetails.class);
         startActivity(intent);
     }
     private void openActivityVote(){

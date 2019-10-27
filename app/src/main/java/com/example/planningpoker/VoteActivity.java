@@ -10,8 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 public class VoteActivity extends AppCompatActivity {
 
@@ -23,7 +23,7 @@ public class VoteActivity extends AppCompatActivity {
     Button buttonVote5;
 
     private FirebaseAuth mAuth;
-    com.google.firebase.database.DatabaseReference reff;
+    //com.google.firebase.database.DatabaseReference reff;
 
 
     @Override
@@ -45,14 +45,14 @@ public class VoteActivity extends AppCompatActivity {
 
         final VoteNumber vote = new VoteNumber();
 
-         final com.google.firebase.database.DatabaseReference reff = FirebaseDatabase.getInstance().getReference("vote");
+        // final com.google.firebase.database.DatabaseReference reff = FirebaseDatabase.getInstance().getReference("vote");
 
         buttonVote1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 vote.setVote("1");
-                reff.push().setValue(vote);
+      //          reff.push().setValue(vote);
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -61,7 +61,7 @@ public class VoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 vote.setVote("2");
-                reff.push().setValue(vote);
+          //      reff.push().setValue(vote);
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -70,7 +70,7 @@ public class VoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 vote.setVote("3");
-                reff.push().setValue(vote);
+            //    reff.push().setValue(vote);
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -78,7 +78,7 @@ public class VoteActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 vote.setVote("4");
-                reff.push().setValue(vote);
+              //  reff.push().setValue(vote);
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -88,7 +88,7 @@ public class VoteActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 vote.setVote("5");
-                reff.push().setValue(vote);
+             //   reff.push().setValue(vote);
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
