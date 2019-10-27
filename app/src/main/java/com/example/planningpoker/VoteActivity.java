@@ -8,9 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class VoteActivity extends AppCompatActivity {
@@ -96,7 +94,6 @@ public class VoteActivity extends AppCompatActivity {
 
 
     private void initialize() {
-
         textViewQuestion = findViewById(R.id.textViewQuestion);
         buttonVote1 = findViewById(R.id.buttonVote1);
         buttonVote2 = findViewById(R.id.buttonVote2);
@@ -104,7 +101,4 @@ public class VoteActivity extends AppCompatActivity {
         buttonVote4 = findViewById(R.id.buttonVote4);
         buttonVote5 = findViewById(R.id.buttonVote5);
     }
-
-
-
 }
