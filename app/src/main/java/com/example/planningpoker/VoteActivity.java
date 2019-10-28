@@ -46,8 +46,7 @@ public class VoteActivity extends AppCompatActivity {
 
     private void onClickListener() {
 
-        //final com.google.firebase.database.DatabaseReference reff = FirebaseDatabase.getInstance().getReference("vote");
-        databaseReference = FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Kod");
 
         buttonVote1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,8 +54,10 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "1";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                databaseReference.child(user.getUid()).setValue(voteNumber);
-                Log.d("fasz",user.getUid());
+                //databaseReference.child(user.getUid()).setValue(voteNumber);
+                String stringVoteNumber = voteNumber.getVote();
+                databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
+
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -67,9 +68,10 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "2";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                databaseReference.child(user.getUid()).setValue(voteNumber);
-                Log.d("fasz",user.getUid());
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                //databaseReference.child(user.getUid()).setValue(voteNumber);
+                String stringVoteNumber = voteNumber.getVote();
+                databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
+
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -80,9 +82,10 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "3";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                databaseReference.child(user.getUid()).setValue(voteNumber);
-                Log.d("fasz",user.getUid());
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                //databaseReference.child(user.getUid()).setValue(voteNumber);
+                String stringVoteNumber = voteNumber.getVote();
+                databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
+
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -92,9 +95,9 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "4";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                databaseReference.child(user.getUid()).setValue(voteNumber);
-                Log.d("fasz",user.getUid());
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                String stringVoteNumber = voteNumber.getVote();
+                databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
+
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
@@ -106,9 +109,9 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "5";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                databaseReference.child(user.getUid()).setValue(voteNumber);
-                Log.d("fasz",user.getUid());
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                String stringVoteNumber = voteNumber.getVote();
+                databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
+
                 startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });

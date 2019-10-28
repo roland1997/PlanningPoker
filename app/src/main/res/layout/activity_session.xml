@@ -72,5 +72,11 @@
             android:background="@color/colorOrange"
             android:text="@string/joinSession" />
 
+        <Button
+            android:id="@+id/newButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="New" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
