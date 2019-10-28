@@ -112,7 +112,7 @@ public class QuestionDetails extends AppCompatActivity {
                 String user2 = user1.replace("}"," ");
                 String user3 = user2.replace("=",": ");
 
-                Log.d("felhasznalo",user3);
+                Log.d("felhasznalo1",user3);
                 textViewVote5.setText("                    "+"5:"+"\n"+user3);
             }
 
