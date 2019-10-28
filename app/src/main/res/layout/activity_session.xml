@@ -48,7 +48,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@color/colorOrange"
-            android:text="@string/createSession" />
+            android:text="@string/createSession"
+            android:textColor="@color/colorWhite" />
 
         <View
             android:layout_marginTop="20dp"
@@ -70,7 +71,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorOrange"
-            android:text="@string/joinSession" />
+            android:text="@string/joinSession"
+            android:textColor="@color/colorWhite" />
 
         <Button
             android:id="@+id/newButton"

@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,10 +27,11 @@ public class QuestionDetails extends AppCompatActivity {
     private  String userID;
     private FirebaseDatabase mFirebaseDatabase;
 
+
     TextView textViewQuestion;
     TextView textViewEmail;
     TextView textViewVote1, textViewVote2, textViewVote3, textViewVote4, textViewVote5;
-
+    Button update;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -132,10 +136,20 @@ public class QuestionDetails extends AppCompatActivity {
 
             }
         });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openActivityQuestionVote();
+            }
+        });
     }
 
-
+    private void openActivityQuestionVote(){
+        Intent intent = new Intent(this, QuestionDetails.class);
+        startActivity(intent);
+    }
     private void initialization() {
+        update = findViewById(R.id.buttonUpdateRecyclerView);
         textViewEmail = findViewById(R.id.textViewEmail);
         textViewQuestion = findViewById(R.id.textViewQuestion);
         textViewVote1 = findViewById(R.id.textViewVote1);

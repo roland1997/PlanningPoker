@@ -2,7 +2,10 @@ package com.example.planningpoker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -18,10 +21,17 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText lName, lPassword;
+    EditText lEmail, lPassword;
     Button lLogin, lRegiszter;
 
     private FirebaseAuth mAuth;
+
+    SharedPreferences sharedpreferences;
+    public static final String MyPREFERENCES = "MyPrefs" ;
+    public static final String Email = "emailKey";
+    public static final String Password = "passwordKey";
+
+    String savedEmail,savedPassword;
 
 
     @Override
@@ -31,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        lName = (EditText) findViewById(R.id.lNameLabel);
+        lEmail = (EditText) findViewById(R.id.lEmailLabel);
         lPassword = (EditText) findViewById(R.id.lPasswordLabel);
         lLogin = (Button) findViewById(R.id.lLoginButton);
         lRegiszter = (Button) findViewById(R.id.lRegisterButton);
@@ -44,13 +54,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
         lLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences.Editor editor;
+                editor = sharedpreferences.edit();
+                editor.putString(Email, lEmail.getText().toString());
+                editor.putString(Password, lPassword.getText().toString());
+                editor.apply();
+
                 openActivitySession();
             }
         });
 
+        savedEmail = sharedpreferences.getString(Email,"");
+        savedPassword = sharedpreferences.getString(Password,"");
+
+        lEmail.setText(savedEmail);
+        lPassword.setText(savedPassword);
 
     }
 
@@ -62,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
     public void openActivitySession() {
 
         String email, password;
-        email = lName.getText().toString().trim();
+        email = lEmail.getText().toString().trim();
         password = lPassword.getText().toString().trim();
 
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
