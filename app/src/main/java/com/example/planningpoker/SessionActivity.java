@@ -35,6 +35,8 @@ public class SessionActivity extends AppCompatActivity {
                 FirebaseDatabase database = FirebaseDatabase.getInstance();
                 DatabaseReference myRef = database.getReference("Kod");
 
+
+
                 if(!question.isEmpty()){
                     myRef.child("Question").setValue("                    "+question);
                 }
