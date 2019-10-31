@@ -22,11 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 public class VoteActivity extends AppCompatActivity {
 
     TextView textViewQuestion;
-    Button buttonVote1;
-    Button buttonVote2;
-    Button buttonVote3;
-    Button buttonVote4;
-    Button buttonVote5;
+
+    Button buttonVote1,buttonVote2,buttonVote3,buttonVote4,buttonVote5;
 
     String code;
 
@@ -39,20 +36,16 @@ public class VoteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vote);
 
-        mAuth = FirebaseAuth.getInstance();
-        //FirebaseUser user = mAuth.getCurrentUser();
-        //databaseReference = FirebaseDatabase.getInstance().getReference();
-
         initialize();
 
-        Toast.makeText(getApplicationContext(), " Szavasat az egyik gombra kattintva adhatja le.", Toast.LENGTH_SHORT).show();
+        questionFromFirebase();
 
-        code = getIntent().getStringExtra("codeString");
+        onClickListener();
+    }
 
+    private void questionFromFirebase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Session").child(code).child("Question");
-
-        //String question = getIntent().getStringExtra("questionString");
 
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -67,12 +60,15 @@ public class VoteActivity extends AppCompatActivity {
 
             }
         });
+    }
 
-        onClickListener();
+    private void openSessionActivity(){
+        Intent intent = new Intent(this,SessionActivity.class);
+        startActivity(intent);
     }
 
     private void onClickListener() {
-        String code = getIntent().getStringExtra("codeString");
+
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Session").child(code);
 
@@ -82,11 +78,10 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "1";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                //databaseReference.child(user.getUid()).setValue(voteNumber);
                 String stringVoteNumber = voteNumber.getVote();
                 databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
 
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                openSessionActivity();
             }
         });
 
@@ -96,11 +91,10 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "2";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                //databaseReference.child(user.getUid()).setValue(voteNumber);
                 String stringVoteNumber = voteNumber.getVote();
                 databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
+                openSessionActivity();
 
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
             }
         });
 
@@ -110,11 +104,10 @@ public class VoteActivity extends AppCompatActivity {
                 String vote = "3";
                 VoteNumber voteNumber = new VoteNumber(vote);
                 FirebaseUser user = mAuth.getCurrentUser();
-                //databaseReference.child(user.getUid()).setValue(voteNumber);
                 String stringVoteNumber = voteNumber.getVote();
                 databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
 
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                openSessionActivity();
             }
         });
         buttonVote4.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +119,7 @@ public class VoteActivity extends AppCompatActivity {
                 String stringVoteNumber = voteNumber.getVote();
                 databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
 
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                openSessionActivity();
             }
         });
 
@@ -140,11 +133,10 @@ public class VoteActivity extends AppCompatActivity {
                 String stringVoteNumber = voteNumber.getVote();
                 databaseReference.child(stringVoteNumber).child(user.getUid()).setValue(user.getEmail());
 
-                startActivity(new Intent(VoteActivity.this, SessionActivity.class));
+                openSessionActivity();
             }
         });
     }
-
 
     private void initialize() {
         textViewQuestion = findViewById(R.id.textViewQuestion);
@@ -153,6 +145,12 @@ public class VoteActivity extends AppCompatActivity {
         buttonVote3 = findViewById(R.id.buttonVote3);
         buttonVote4 = findViewById(R.id.buttonVote4);
         buttonVote5 = findViewById(R.id.buttonVote5);
+
+        code = getIntent().getStringExtra("codeString");
+
+        mAuth = FirebaseAuth.getInstance();
+
+        Toast.makeText(getApplicationContext(), " Szavasat az egyik gombra kattintva adhatja le.", Toast.LENGTH_LONG).show();
     }
 
 

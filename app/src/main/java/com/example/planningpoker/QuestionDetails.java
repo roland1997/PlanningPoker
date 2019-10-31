@@ -28,11 +28,8 @@ public class QuestionDetails extends AppCompatActivity {
     private FirebaseDatabase mFirebaseDatabase;
 
 
-    TextView textViewQuestion;
-    TextView textViewEmail;
+    TextView textViewQuestion,textViewEmail;
     TextView textViewVote1, textViewVote2, textViewVote3, textViewVote4, textViewVote5;
-    Button update;
-
     String code;
 
     @Override
@@ -41,14 +38,27 @@ public class QuestionDetails extends AppCompatActivity {
         setContentView(R.layout.activity_question_details);
 
         initialization();
-        mAuth = FirebaseAuth.getInstance();
-        mFirebaseDatabase = FirebaseDatabase.getInstance();
 
-        code = getIntent().getStringExtra("codeString");
-        Log.d("keremazidt",code);
+        answerListing();
 
-        FirebaseUser user = mAuth.getCurrentUser();
-        userID = user.getUid();
+        questionListing();
+    }
+    private void questionListing(){
+        myRef.child("Question").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String question = dataSnapshot.getValue().toString();
+                textViewQuestion.setText(question);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void answerListing(){
 
         myRef = mFirebaseDatabase.getReference("Session").child(code);
 
@@ -131,33 +141,9 @@ public class QuestionDetails extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { }
         });
-
-        myRef.child("Question").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String question = dataSnapshot.getValue().toString();
-                textViewQuestion.setText(question);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        update.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityQuestionVote();
-            }
-        });
     }
 
-    private void openActivityQuestionVote(){
-        Intent intent = new Intent(this, QuestionDetails.class);
-        startActivity(intent);
-    }
     private void initialization() {
-        update = findViewById(R.id.buttonUpdateRecyclerView);
         textViewEmail = findViewById(R.id.textViewEmail);
         textViewQuestion = findViewById(R.id.textViewQuestion);
         textViewVote1 = findViewById(R.id.textViewVote1);
@@ -165,6 +151,17 @@ public class QuestionDetails extends AppCompatActivity {
         textViewVote3 = findViewById(R.id.textViewVote3);
         textViewVote4 = findViewById(R.id.textViewVote4);
         textViewVote5 = findViewById(R.id.textViewVote5);
+
+        mAuth = FirebaseAuth.getInstance();
+        mFirebaseDatabase = FirebaseDatabase.getInstance();
+
+        code = getIntent().getStringExtra("codeString");
+
+        FirebaseUser user = mAuth.getCurrentUser();
+
+        userID = user.getUid();
+
+
 
     }
 }

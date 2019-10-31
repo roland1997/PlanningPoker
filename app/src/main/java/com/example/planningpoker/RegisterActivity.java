@@ -28,17 +28,16 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        mAuth = FirebaseAuth.getInstance();
+        initialization();
 
-        rName = (EditText)findViewById(R.id.rNameLabel);
-        rEmail = (EditText)findViewById(R.id.rEmailLabel);
-        rPassword = (EditText)findViewById(R.id.rPasswordLabel);
-        rRegiszter = (Button)findViewById(R.id.rRegisterButton);
+        register();
+    }
 
+    private void register(){
         rRegiszter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            openActivityMain();
+                openActivityMain();
             }
         });
     }
@@ -63,5 +62,15 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void initialization(){
+
+        mAuth = FirebaseAuth.getInstance();
+
+        rName = (EditText)findViewById(R.id.rNameLabel);
+        rEmail = (EditText)findViewById(R.id.rEmailLabel);
+        rPassword = (EditText)findViewById(R.id.rPasswordLabel);
+        rRegiszter = (Button)findViewById(R.id.rRegisterButton);
     }
 }

@@ -39,22 +39,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
+        initialization();
 
-        lEmail = (EditText) findViewById(R.id.lEmailLabel);
-        lPassword = (EditText) findViewById(R.id.lPasswordLabel);
-        lLogin = (Button) findViewById(R.id.lLoginButton);
-        lRegiszter = (Button) findViewById(R.id.lRegisterButton);
+        register();
 
+        login();
 
-        lRegiszter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openActivityRegister();
-            }
-        });
+        stayLoggedIn();
+    }
+    private void register(){
+    lRegiszter.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            openActivityRegister();
+        }
+    });
+}
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+    private void login(){
 
         lLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,13 +70,15 @@ public class MainActivity extends AppCompatActivity {
                 openActivitySession();
             }
         });
+    }
+
+    private void stayLoggedIn(){
 
         savedEmail = sharedpreferences.getString(Email,"");
         savedPassword = sharedpreferences.getString(Password,"");
 
         lEmail.setText(savedEmail);
         lPassword.setText(savedPassword);
-
     }
 
     public void openActivityRegister() {
@@ -109,5 +113,16 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void initialization(){
+        mAuth = FirebaseAuth.getInstance();
+
+        lEmail = (EditText) findViewById(R.id.lEmailLabel);
+        lPassword = (EditText) findViewById(R.id.lPasswordLabel);
+        lLogin = (Button) findViewById(R.id.lLoginButton);
+        lRegiszter = (Button) findViewById(R.id.lRegisterButton);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 }

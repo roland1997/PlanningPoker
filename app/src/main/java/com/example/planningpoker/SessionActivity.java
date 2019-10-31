@@ -3,7 +3,6 @@ package com.example.planningpoker;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,21 +17,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import static com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL;
 import static java.lang.Thread.sleep;
 
 public class SessionActivity extends AppCompatActivity {
-    Button buttonCreateSession,buttonJoinSession;
+    Button buttonCreateSession,buttonJoinSession,newButton;
     EditText textQuestion,numberQCode;
     EditText getNumberQCodeJoin;
 
-    Button newButton;
-
-    String code;
-    String question;
-
-    String jCode="";
-    String jCodeCheck="";
+    String code,question,jCode="";
 
     FirebaseDatabase database;
     DatabaseReference myRef;
@@ -44,26 +36,42 @@ public class SessionActivity extends AppCompatActivity {
 
         initialize();
 
+        createSession();
+
+        joinSession();
+
+        newButton();
+    }
+
+    private void createSession(){
+
         buttonCreateSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 question = textQuestion.getText().toString().trim();
                 code = numberQCode.getText().toString().trim();
-                clear();
-                database = FirebaseDatabase.getInstance();
-                myRef = database.getReference("Session").child(code);
-                Log.d("question", question);
+                if(!code.isEmpty()||!question.isEmpty()) {
+                    clear();
+                    database = FirebaseDatabase.getInstance();
+                    myRef = database.getReference("Session").child(code);
+                    Log.d("question", question);
 
 
+                    if (!question.isEmpty()) {
+                        myRef.child("Question").setValue("                    " + question);
+                    }
 
-                if(!question.isEmpty()){
-                    myRef.child("Question").setValue("                    "+question);
+                    openActivityQuestionRoom(code);
                 }
-                //database();
-                openActivityQuestionRoom(code);
+                else
+                    Toast.makeText(getApplicationContext(),"Kérem irja be a kérdést és a szoba kodot!", Toast.LENGTH_SHORT).show();
             }
         });
+
+    }
+
+    private void joinSession(){
         buttonJoinSession.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +84,9 @@ public class SessionActivity extends AppCompatActivity {
 
             }
         });
+    }
 
+    private void newButton (){
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,9 +100,10 @@ public class SessionActivity extends AppCompatActivity {
         intent.putExtra("codeString",codeString);
         startActivity(intent);
     }
+
     private void openActivityVote(String codeString){
         Intent intent = new Intent(this, VoteActivity.class);
-        //Log.d("hulye",codeString);
+
         intent.putExtra("codeString",codeString);
         startActivity(intent);
     }
@@ -115,7 +126,6 @@ public class SessionActivity extends AppCompatActivity {
     buttonCreateSession = findViewById(R.id.sCreateButton);
     getNumberQCodeJoin = findViewById(R.id.sQuestionCodeJoin);
     buttonJoinSession = findViewById(R.id.sJoinSession);
-
     newButton = findViewById(R.id.newButton);
 
     }
@@ -129,16 +139,12 @@ public class SessionActivity extends AppCompatActivity {
             myRef.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    jCodeCheck="";
-                    jCodeCheck = dataSnapshot.getKey();
-
-                    Log.d("globalis", jCodeCheck);
 
                     if(dataSnapshot.getValue()!=null){
 
                         openActivityVote(szoba);
                         Log.d("drt","a");
-                        jCodeCheck="";
+
                     }
                     else{
                         Toast.makeText(getApplicationContext(),"Nem jo a kod", Toast.LENGTH_SHORT).show();
@@ -153,6 +159,8 @@ public class SessionActivity extends AppCompatActivity {
             });
 
     }
+
+
 
 
 }
