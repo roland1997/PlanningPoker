@@ -24,7 +24,7 @@ public class QuestionDetails extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private DatabaseReference myRef;
-    private  String userID;
+    private String userID;
     private FirebaseDatabase mFirebaseDatabase;
 
 
@@ -32,6 +32,9 @@ public class QuestionDetails extends AppCompatActivity {
     TextView textViewEmail;
     TextView textViewVote1, textViewVote2, textViewVote3, textViewVote4, textViewVote5;
     Button update;
+
+    String code;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,9 +43,14 @@ public class QuestionDetails extends AppCompatActivity {
         initialization();
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
-        myRef = mFirebaseDatabase.getReference("Kod");
+
+        code = getIntent().getStringExtra("codeString");
+        Log.d("keremazidt",code);
+
         FirebaseUser user = mAuth.getCurrentUser();
         userID = user.getUid();
+
+        myRef = mFirebaseDatabase.getReference("Session").child(code);
 
         myRef.child("1").addValueEventListener(new ValueEventListener() {
             @Override
@@ -52,7 +60,7 @@ public class QuestionDetails extends AppCompatActivity {
                 String user2 = user1.replace("}"," ");
                 String user3 = user2.replace("=",": ");
 
-                Log.d("felhasznalo",user3);
+                //Log.d("felhasznalo",user3);
                 textViewVote1.setText("                    "+"1:"+"\n"+user3);
             }
 

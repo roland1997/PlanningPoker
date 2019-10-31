@@ -28,6 +28,8 @@ public class VoteActivity extends AppCompatActivity {
     Button buttonVote4;
     Button buttonVote5;
 
+    String code;
+
     private FirebaseAuth mAuth;
     private DatabaseReference databaseReference;
 
@@ -45,10 +47,15 @@ public class VoteActivity extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), " Szavasat az egyik gombra kattintva adhatja le.", Toast.LENGTH_SHORT).show();
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Kod");
+        code = getIntent().getStringExtra("codeString");
 
-        myRef.child("Question").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Session").child(code).child("Question");
+
+        //String question = getIntent().getStringExtra("questionString");
+
+
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String question = dataSnapshot.getValue().toString();
@@ -65,8 +72,9 @@ public class VoteActivity extends AppCompatActivity {
     }
 
     private void onClickListener() {
+        String code = getIntent().getStringExtra("codeString");
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Kod");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Session").child(code);
 
         buttonVote1.setOnClickListener(new View.OnClickListener() {
             @Override
