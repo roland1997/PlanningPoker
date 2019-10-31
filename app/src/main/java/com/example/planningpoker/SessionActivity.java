@@ -55,6 +55,8 @@ public class SessionActivity extends AppCompatActivity {
                 myRef = database.getReference("Session").child(code);
                 Log.d("question", question);
 
+
+
                 if(!question.isEmpty()){
                     myRef.child("Question").setValue("                    "+question);
                 }
