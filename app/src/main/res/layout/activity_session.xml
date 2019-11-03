@@ -8,77 +8,77 @@
     android:textAlignment="center"
     android:background="@color/colorBackgroung">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textViewLogin"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:text="@string/session"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:background="@color/colorDarkBlue"
-            android:textColor="@color/colorWhite"
-            android:gravity="center"/>
-
-        <EditText
-            android:id="@+id/sQuestionLabel"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:gravity="start|top"
-            android:hint="@string/question"
-            android:inputType="textMultiLine" />
+            android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/sQuestionCode"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/questionCode"
-            android:inputType="number" />
+            <TextView
+                android:id="@+id/textViewLogin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@color/colorDarkBlue"
+                android:gravity="center"
+                android:text="@string/session"
+                android:textColor="@color/colorWhite"
+                android:textSize="20dp"
+                android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/sCreateButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@color/colorOrange"
-            android:text="@string/createSession"
-            android:textColor="@color/colorWhite" />
+            <EditText
+                android:id="@+id/sQuestionLabel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/question"
+                android:inputType="textMultiLine" />
 
-        <View
-            android:layout_marginTop="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="4dp"
-            android:background="@color/colorDarkBlue"/>
+            <EditText
+                android:id="@+id/sQuestionCode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/questionCode"
+                android:inputType="number" />
 
-        <EditText
-            android:id="@+id/sQuestionCodeJoin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:ems="10"
-            android:hint="@string/questionCode"
-            android:inputType="number" />
+            <Button
+                android:id="@+id/sCreateButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:background="@color/colorOrange"
+                android:text="@string/createSession"
+                android:textColor="@color/colorWhite" />
 
-        <Button
-            android:id="@+id/sJoinSession"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorOrange"
-            android:text="@string/joinSession"
-            android:textColor="@color/colorWhite" />
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="4dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorDarkBlue" />
 
-        <Button
-            android:id="@+id/newButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="New" />
+            <EditText
+                android:id="@+id/sQuestionCodeJoin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:ems="10"
+                android:hint="@string/questionCode"
+                android:inputType="number" />
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/sJoinSession"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorOrange"
+                android:text="@string/joinSession"
+                android:textColor="@color/colorWhite" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

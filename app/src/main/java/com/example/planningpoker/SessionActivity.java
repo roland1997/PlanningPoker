@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import static java.lang.Thread.sleep;
 
 public class SessionActivity extends AppCompatActivity {
-    Button buttonCreateSession,buttonJoinSession,newButton;
+    Button buttonCreateSession,buttonJoinSession;
     EditText textQuestion,numberQCode;
     EditText getNumberQCodeJoin;
 
@@ -40,7 +40,7 @@ public class SessionActivity extends AppCompatActivity {
 
         joinSession();
 
-        newButton();
+
     }
 
     private void createSession(){
@@ -86,14 +86,6 @@ public class SessionActivity extends AppCompatActivity {
         });
     }
 
-    private void newButton (){
-        newButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clear();
-            }
-        });
-    }
 
     private void openActivityQuestionRoom(String codeString){
         Intent intent = new Intent(this, QuestionDetails.class);
@@ -126,7 +118,7 @@ public class SessionActivity extends AppCompatActivity {
     buttonCreateSession = findViewById(R.id.sCreateButton);
     getNumberQCodeJoin = findViewById(R.id.sQuestionCodeJoin);
     buttonJoinSession = findViewById(R.id.sJoinSession);
-    newButton = findViewById(R.id.newButton);
+
 
     }
 
