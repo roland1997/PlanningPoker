@@ -21,5 +21,6 @@
 
     <string name="codeString">Code</string>
     <string name="questionString">Question</string>
+    <string name="view_question">View question</string>
 
 </resources>

@@ -10,7 +10,6 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:orientation="vertical">
 
         <TextView
@@ -28,66 +27,64 @@
             android:id="@+id/textViewQuestion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-
-            android:gravity="center|center_horizontal" />
+            android:layout_marginTop="70dp" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="30dp"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/buttonVote1"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="@color/colorOrange"
+                android:layout_marginLeft="10dp"
                 android:text="@string/textNumberOne"
+                android:background="@color/colorOrange"
                 android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/buttonVote2"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="@color/colorOrange"
+                android:layout_marginLeft="10dp"
                 android:text="@string/TextNumberTwo"
+                android:background="@color/colorOrange"
                 android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/buttonVote3"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="@color/colorOrange"
+                android:layout_marginLeft="10dp"
                 android:text="@string/TextNumberThree"
+                android:background="@color/colorOrange"
                 android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/buttonVote4"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="@color/colorOrange"
+                android:layout_marginLeft="10dp"
                 android:text="@string/NumberFour"
+                android:background="@color/colorOrange"
                 android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
 
             <Button
                 android:id="@+id/buttonVote5"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:background="@color/colorOrange"
+                android:layout_marginLeft="10dp"
                 android:text="@string/NumberFive"
+                android:background="@color/colorOrange"
                 android:textColor="@color/colorWhite"
-                android:textStyle="bold" />
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>

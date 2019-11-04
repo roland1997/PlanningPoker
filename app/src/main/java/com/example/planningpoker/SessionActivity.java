@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 import static java.lang.Thread.sleep;
 
 public class SessionActivity extends AppCompatActivity {
-    Button buttonCreateSession,buttonJoinSession;
+    Button buttonCreateSession,buttonJoinSession, viewQuestionButton;
     EditText textQuestion,numberQCode;
     EditText getNumberQCodeJoin;
 
@@ -40,7 +40,31 @@ public class SessionActivity extends AppCompatActivity {
 
         joinSession();
 
+        viewQuestion();
 
+
+    }
+
+    private void viewQuestion() {
+        Log.d("question", "alma");
+
+        viewQuestionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                code = numberQCode.getText().toString().trim();
+
+                if(!code.isEmpty()) {
+                    //clear();
+                    //database = FirebaseDatabase.getInstance();
+                    //myRef = database.getReference("Session").child(code);
+
+                    openActivityQuestionRoom(code);
+                }
+                else
+                Toast.makeText(getApplicationContext(),"Kérem irja be a szoba kodot!", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void createSession(){
@@ -118,6 +142,7 @@ public class SessionActivity extends AppCompatActivity {
     buttonCreateSession = findViewById(R.id.sCreateButton);
     getNumberQCodeJoin = findViewById(R.id.sQuestionCodeJoin);
     buttonJoinSession = findViewById(R.id.sJoinSession);
+    viewQuestionButton = findViewById(R.id.viewButton);
 
 
     }
