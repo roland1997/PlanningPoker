@@ -2,6 +2,9 @@ package com.example.planningpoker;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import static java.lang.Thread.sleep;
 
 public class SessionActivity extends AppCompatActivity {
-    Button buttonCreateSession,buttonJoinSession, viewQuestionButton;
+    Button buttonCreateSession,buttonJoinSession, viewQuestionButton, voteButton;
     EditText textQuestion,numberQCode;
     EditText getNumberQCodeJoin;
 
@@ -42,8 +45,18 @@ public class SessionActivity extends AppCompatActivity {
 
         viewQuestion();
 
-
+        simpleFragment();
     }
+
+    private void simpleFragment() {
+        voteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setFragment(new SimpleFragment());
+            }
+        });
+    }
+
 
     private void viewQuestion() {
         Log.d("question", "alma");
@@ -55,10 +68,6 @@ public class SessionActivity extends AppCompatActivity {
                 code = numberQCode.getText().toString().trim();
 
                 if(!code.isEmpty()) {
-                    //clear();
-                    //database = FirebaseDatabase.getInstance();
-                    //myRef = database.getReference("Session").child(code);
-
                     openActivityQuestionRoom(code);
                 }
                 else
@@ -143,6 +152,7 @@ public class SessionActivity extends AppCompatActivity {
     getNumberQCodeJoin = findViewById(R.id.sQuestionCodeJoin);
     buttonJoinSession = findViewById(R.id.sJoinSession);
     viewQuestionButton = findViewById(R.id.viewButton);
+    voteButton = findViewById(R.id.fragment);
 
 
     }
@@ -175,6 +185,14 @@ public class SessionActivity extends AppCompatActivity {
                 }
             });
 
+    }
+    public void setFragment(Fragment fragment){
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(android.R.anim.fade_in, android.R.anim.fade_out);
+        fragmentTransaction.replace(R.id.frameL, fragment);
+        fragmentTransaction.commit();
     }
 
 
