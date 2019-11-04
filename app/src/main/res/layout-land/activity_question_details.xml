@@ -15,8 +15,8 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="410dp"
-        android:layout_height="613dp"
+        android:layout_width="578dp"
+        android:layout_height="590dp"
         android:layout_marginTop="56dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewLogin">
@@ -29,24 +29,30 @@
             <TextView
                 android:id="@+id/textViewQuestion"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textStyle="bold|italic" />
 
             <TextView
                 android:id="@+id/textViewVote1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/textViewVote2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/textViewVote3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/textViewVote4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
             <TextView
                 android:id="@+id/textViewVote5"
                 android:layout_width="wrap_content"
